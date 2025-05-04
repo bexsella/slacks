@@ -494,14 +494,50 @@ Listed below are the Slacks semaphore representations of Latin characters.
 ### Space
 
 | Left | Right |
-|:--: |:--: |
-|  -  |  -  |
-|  -  |  -  |
-|  -  |  -  |
-|  ■  |  ■  |
+|:----:|:-----:|
+|  -   |   -   |
+|  -   |   -   |
+|  -   |   -   |
+|  ■   |   ■   |
 
 * Hexcode representation: `h88`
 * Binary representation: `b1000_1000`
+
+### Message Start
+
+| Left | Right |
+|:----:|:-----:|
+|  -   |   -   |
+|  ■   |   -   |
+|  ■   |   ■   |
+|  ■   |   -   |
+
+* Hexcode representation: `h4E`
+* Binary representation: `b0100_1110`
+
+### Message End
+
+| Left | Right |
+|:----:|:-----:|
+|  -   |   -   |
+|  -   |   ■   |
+|  ■   |   ■   |
+|  -   |   ■   |
+
+* Hexcode representation: `hE4`
+* Binary representation: `b1110_0100`
+
+### Error Code
+
+| Left | Right |
+|:----:|:-----:|
+|  ■   |   ■   |
+|  ■   |   ■   |
+|  ■   |   ■   |
+|  ■   |   ■   |
+
+* Hexcode representation: `hff`
+* Binary representation: `b1111_1111`
 
 ## Initial Test Setup
 
@@ -511,4 +547,24 @@ that all shutters are operating correctly and as expected.
 
 ## Tower Codes
 
-TODO
+| Character | Definition                               |
+|:---------:|:-----------------------------------------|
+|     G     | Send message on                          |
+|     N     | Do not log                               |
+|     U     | Turn around at the end, and send it back |
+|     M     | Message start                            |
+
+## Clacks Message Format
+
+A clacks message will always start with an M character followed by 4 characters
+representing the address code of the tower to that the message is addressed
+to, and the 4 characters representing the address code of the tower that originally
+sent the message. Any associated codes that may be required for the message will
+be sent immediately after the address codes. The content of the message will start
+with the Message Start code, and once the message has been communicated, the
+Message End code will be sent.
+
+### Example Message
+
+#### String Formatting:
+`Ma1febeed[hello world]`

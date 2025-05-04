@@ -23,14 +23,12 @@ impl LatLon {
     pub fn distance(self, b: LatLon) -> f64 {
         // TODO: make this calculate on a proper ellipsoid, this is good enough
         // for the most part now.
-        let d: LatLon = LatLon {
-            lat: (self.lat - b.lat).abs().to_radians(),
-            lon: (self.lon - b.lon).abs().to_radians()
-        };
+        let d_lat = (self.lat - b.lat).abs().to_radians();
+        let d_lon = (self.lon - b.lon).abs().to_radians();
 
-        let t = maths::hav(d.lat) +
-            self.lat.to_radians().cos() * b.lat.to_radians().cos() * maths::hav(d.lon);
+        let t = maths::hav(d_lat) +
+            self.lat.to_radians().cos() * b.lat.to_radians().cos() * maths::hav(d_lon);
 
-        return 2. * EARTH_RADIUS * t.sqrt().asin();
+        2. * EARTH_RADIUS * t.sqrt().asin()
     }
 }

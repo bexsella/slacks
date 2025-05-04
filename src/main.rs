@@ -8,7 +8,10 @@ mod slacks;
 mod tower;
 mod geo;
 mod maths;
+mod config;
 
 fn main() {
-    slacks::pretty_print(slacks::from_str("1234567890abcdefghijklmnopqrstuvwxyz"))
+    slacks::Semaphore::pretty_print(
+        slacks::Semaphore::from_str("1234567890abcdefghijklmnopqrstuvwxyz")
+    )
 }

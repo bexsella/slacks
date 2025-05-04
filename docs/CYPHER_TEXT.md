@@ -489,6 +489,20 @@ Listed below are the Slacks semaphore representations of Latin characters.
 * Hexcode representation: `hA5`
 * Binary representation: `b1010_0101`
 
+## Punctuation/Control Characters
+
+### Space
+
+| Left | Right |
+|:--: |:--: |
+|  -  |  -  |
+|  -  |  -  |
+|  -  |  -  |
+|  ■  |  ■  |
+
+* Hexcode representation: `h88`
+* Binary representation: `b1000_1000`
+
 ## Initial Test Setup
 
 To ensure the clacks tower is fully operational it is beneficial to run through
